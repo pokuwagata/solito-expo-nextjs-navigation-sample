@@ -2,13 +2,21 @@ import { Text, useSx, View, H1, P, Row, A } from 'dripsy'
 import { TextLink } from 'solito/link'
 import { MotiLink } from 'solito/moti'
 
-export function HomeScreen() {
+export function HomeScreen({
+  route,
+}: {
+  route: { params: { posts: { id: number }[] } }
+}) {
   const sx = useSx()
+  const { posts } = route.params
 
   return (
     <View
       sx={{ flex: 1, justifyContent: 'center', alignItems: 'center', p: 16 }}
     >
+      {posts.map((post) => (
+        <Text key={post.id}>{post.id}</Text>
+      ))}
       <H1 sx={{ fontWeight: '800' }}>Welcome to Solito.</H1>
       <View sx={{ maxWidth: 600 }}>
         <P sx={{ textAlign: 'center' }}>

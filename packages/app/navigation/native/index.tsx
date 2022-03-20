@@ -4,7 +4,7 @@ import { HomeScreen } from '../../features/home/screen'
 import { UserDetailScreen } from '../../features/user/detail-screen'
 
 const Stack = createNativeStackNavigator<{
-  home: undefined
+  home: { posts: { id: number }[] }
   'user-detail': {
     id: string
   }
@@ -19,6 +19,7 @@ export function NativeNavigation() {
         options={{
           title: 'Home',
         }}
+        initialParams={{ posts: [{ id: 1 }, { id: 2 }] }}
       />
       <Stack.Screen
         name="user-detail"
